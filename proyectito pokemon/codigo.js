@@ -14,7 +14,35 @@ $(document).ready(function() {
                 let nombrepokemon = response.name;
                 let habilidades = response.abilities;
                 let img = response.sprites;
-                
+                let img2 = response.types;
+                let URLSpecies = response.species;
+
+
+                $.ajax({
+                    url: URLSpecies.url ,
+                    type: "GET",
+                    success: function(response){
+                        let evochain = response.evolution_chain;
+
+                        $.ajax({
+                            url: evochain.url,
+                            type: "GET",
+                            success: function(response){
+                                let evolves
+                            },
+                            error: function(error){
+                                console.log("ERROR: " + error);
+                            }
+                        })
+
+
+
+                    },
+                    error: function(error){
+                        console.log("ERROR: " + error);
+                    }
+
+                })
                 // Display fetched information in the div
                 $("#pokemon").text("Atrapaste un: " + nombrepokemon + "!");
                 $("#imgPokemonF").attr("src", img.front_default);
