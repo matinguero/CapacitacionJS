@@ -3,7 +3,7 @@ $(document).ready(function() {
     flag=true;
     $("#btnAtrapar").click(function() {
         let numero = Math.floor(Math.random() * 1000); 
-        console.log("INFO: Hola, tu numero Random es:" + numero);
+       // console.log("INFO: Hola, tu numero Random es:" + numero);
         
         $('ul').empty();
         $.ajax({
@@ -14,7 +14,7 @@ $(document).ready(function() {
                 let nombrepokemon = response.name;
                 let habilidades = response.abilities;
                 let img = response.sprites;
-                let img2 = response.types;
+              //  let img2 = response.types;
                 let URLSpecies = response.species;
 
 
@@ -28,11 +28,18 @@ $(document).ready(function() {
                             url: evochain.url,
                             type: "GET",
                             success: function(response){
-                                let evolves
+                                let evolves = response.chain.evolves_to[0].evolves_to[0].species.name;
+
+                               console.log(evolves);
+                               $("#ddlEvos").append($('<option>', {
+                                value: 1,
+                                text: evolves
+                            }));
                             },
                             error: function(error){
                                 console.log("ERROR: " + error);
                             }
+                            
                         })
 
 
@@ -44,7 +51,8 @@ $(document).ready(function() {
 
                 })
                 // Display fetched information in the div
-                $("#pokemon").text("Atrapaste un: " + nombrepokemon + "!");
+                $("#pokemon").text("Atrapaste un:");
+                $("#pokemon2").text(nombrepokemon + "!");
                 $("#imgPokemonF").attr("src", img.front_default);
                 $("#imgPokemonB").attr("src", img.back_default);
                 
