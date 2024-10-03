@@ -9,15 +9,18 @@ table{
 
 img { 
     background-color: rgb(155, 218, 255);
+    border-radius: 10px;
 }
 .bordefoto{
-  background-color: rgb(87, 87, 87);
-  border: 17px solid rgb(87, 87, 87);
+  background-color: rgb(84, 75, 78);
+  border: 17px solid rgb(84, 75, 78);
+  border-radius: 17px;
+  justify-content: center;
 }
 .bordedex{
   width: 134px;
-  background-color: rgb(61, 60, 60);
-  border: 17px solid rgb(61, 60, 60);
+  background-color: #8f8ba2;
+  border: 17px solid #8f8ba2;
 }
 .arcadefont {
     font-family: 'ArcadeClassic', sans-serif;
@@ -28,7 +31,7 @@ button{
     
 }
   h1 {
-    color: rgb(0, 0, 0);
+    color: rgb(246, 225, 179);
     text-align: center;
     font-family: 'ArcadeClassic', sans-serif;
     font-size: 29px;
@@ -45,6 +48,11 @@ button{
     position: relative;
   }
   
+  .datafont{
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px rgb(0, 0, 0);
+  }
+
   .center {
     margin: 0;
     position: absolute;
@@ -53,3 +61,20 @@ button{
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+
+  .image-container {
+    text-align: center; 
+}
+
+.inner {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(155, 218, 255);
+    border-radius: 10px; 
+    padding-top: 4px;
+}
+
+.left-div, .right-div {
+  display: inline-block;
+  padding: 20px;
+}
