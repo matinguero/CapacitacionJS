@@ -2,10 +2,22 @@ body {
     background-color: rgb(255, 250, 203);
   }
 
+
+table{
+  border: 8.5px solid rgb(87, 87, 87) ;
+}
+
 img { 
     background-color: rgb(155, 218, 255);
 }
-
+.bordefoto{
+  background-color: rgb(87, 87, 87);
+  border: 17px solid rgb(87, 87, 87);
+}
+.bordedex{
+  background-color: rgb(61, 60, 60);
+  border: 17px solid rgb(61, 60, 60);
+}
 .arcadefont {
     font-family: 'ArcadeClassic', sans-serif;
 }
@@ -15,7 +27,7 @@ button{
     
 }
   h1 {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     text-align: center;
     font-family: 'ArcadeClassic', sans-serif;
   }
@@ -28,9 +40,7 @@ button{
   }
 
   .container {
-    height: 200px;
     position: relative;
-    border: 17px solid rgb(53, 58, 53);
   }
   
   .center {
