@@ -51,8 +51,7 @@ $(document).ready(function() {
 
                 })
                 // Display fetched information in the div
-                $("#pokemon").text("Atrapaste un:");
-                $("#pokemon2").text(nombrepokemon + "!");
+                $("#pokemon2").text(nombrepokemon);
                 $("#imgPokemonF").attr("src", img.front_default);
                 $("#imgPokemonB").attr("src", img.back_default);
                 
