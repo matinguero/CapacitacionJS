@@ -25,6 +25,9 @@ img {
 .arcadefont {
     font-family: 'ArcadeClassic', sans-serif;
 }
+.botonnext{
+  font-size: large;
+}
 
 button{
     font-family: 'ArcadeClassic', sans-serif;

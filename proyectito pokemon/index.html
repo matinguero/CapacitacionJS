@@ -5,61 +5,64 @@
     <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="codigo.js"></Script>
 </head>
 <body>
+
+
 <div class="container">
-
-    <div class="container">
-        <button id="btnAtrapar" class="center" >Ver info</button>
-
-    </div>
-
-
-    
+   
     <div class="bordedex left-div">
         
-    <h1>INFO PKMN</h1>
+        <h1>INFO PKMN</h1>
 
-    <p id="pokemon2" class="datafont"></p>
+        <p id="pokemon2" class="datafont"></p>
 
-    <div class="bordefoto image-container" >
-        <div class="inner">
-<!-- AGREGAR DIVS -->
-    <img id="imgPokemonF" src="" >
-    <img id="imgPokemonB" src="" hidden="true">
+        <div class="bordefoto image-container" >
 
+            <div class="inner">
+                <img id="imgPokemonF" src="" >
+                <img id="imgPokemonB" src="" hidden="true">
+            </div>
 
-    </div>
-    </div>
-
-    
-    
-
-
-    
-   
-
-
-    
-    <ul id="ulPokemon" class="arcadefont datafont">
-       <label class="arcadefont ">Habilidades</label>
-    </ul>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="codigo.js"></Script>
-
-    </div>
-  
-    <div class="center blackbackground2 right-div">
-    <table>
+        </div>
         
-    </table>
+        <label class="arcadefont datafont">Habilidades:</label>
+        <ul id="ulPokemon" class="arcadefont datafont">
+       
+        </ul>
+
+    </div>
+
+    <div class="center blackbackground2 right-div">
     
+        <div >
+
+            <table id="pokedex">
+        
+            </table>
+    
+        </div>
+
+        <div>
+
+            <button id="btnBack" class="" >Anterior</button> 
+
+            <button id="btnNext" class="" >Siguiente</button>
+        
+        </div>
+        
+    </div>
+
+
 </div>
 
-
-
+<!--
+<div class="container">
+    <button id="btnAtrapar" class="center" >Ver info</button>
 </div>
+-->
 </body>
  
 </html>
