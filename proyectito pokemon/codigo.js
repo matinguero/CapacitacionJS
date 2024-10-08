@@ -19,9 +19,9 @@ $(document).ready(function() {
 
 
     $("#btnBack").click(function() {
-        botonBack();
         
-    
+        botonBack();
+            
     });
 
     
@@ -60,7 +60,7 @@ $(document).ready(function() {
                     $("#btnNext").prop("disabled", false);
                 }
                 console.log( pokemones);
-            let nombrenro = 0;
+                let nombrenro = 0;
                 for (let i = 0; i < 4; i++) {
 
                    const row = $('<tr></tr>');
@@ -86,32 +86,29 @@ $(document).ready(function() {
 
 function cargartarjetapokemon(id) {
     $.ajax({
-        url: " https://pokeapi.co/api/v2/pokemon/" + id, // Example: fetching Ditto's data
+        url: " https://pokeapi.co/api/v2/pokemon/" + id,
         type: "GET",
         success: function(response) {
             
             let nombrepokemon = response.name;
             let habilidades = response.abilities;
             let img = response.sprites;
-          //  let img2 = response.types;
             let URLSpecies = response.species;
 
             
-            
-            // Display fetched information in the div
             $("#pokemon2").text(nombrepokemon);
             $("#imgPokemonF").attr("src", img.front_default);
-            $("#imgPokemonB").attr("src", img.back_default);
-            
+            $("#imgPokemonB").attr("src", img.back_default);            
             $("#hid").show();
+
             console.log("Atrapaste un: " + nombrepokemon + "!")
             
+
             for (let i = 0; i<habilidades.length; i++){
                 console.log(habilidades);
                 $('#ulPokemon').append('<li>' + habilidades[i].ability.name + '</li>');
             };
             
-            //habilidades.forEach(myFunction);
             flag=false;
         },
         error: function(error) {
@@ -127,10 +124,13 @@ function botonNext(){
         url: botonnexturl,
         type: "GET",
         success: function(response) {
+
                 $("#pokedex").empty();
+            
                 let pokemones = response.results;
                 botonnexturl = response.next;
                 botonback = response.previous;
+            
                 if(botonnexturl === null){
                     $("#btnNext").prop("disabled", true);
                 }else{
@@ -143,7 +143,7 @@ function botonNext(){
                 }
                 
                 console.log( pokemones);
-            let nombrenro = 0;
+                let nombrenro = 0;
                 for (let i = 0; i < 4; i++) {
 
                    const row = $('<tr></tr>');
@@ -175,10 +175,12 @@ function botonBack(){
         type: "GET",
         success: function(response) {
             
-            $("#pokedex").empty();
+                $("#pokedex").empty();
+                
                 let pokemones = response.results;
                 botonnexturl = response.next;
                 botonback = response.previous;
+                
                 if(botonback === null){
                     $("#btnBack").prop("disabled", true);
                 }else{
@@ -189,8 +191,11 @@ function botonBack(){
                 }else{
                     $("#btnNext").prop("disabled", false);
                 }
+                
                 console.log( pokemones);
-            let nombrenro = 0;
+                
+                let nombrenro = 0;
+                
                 for (let i = 0; i < 4; i++) {
 
                    const row = $('<tr></tr>');
