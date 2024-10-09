@@ -1,33 +1,32 @@
 
-$(document).ready(function() {""
+$(document).ready(function() {
     
     let numero = Math.floor(Math.random() * 1000);
     let botonnexturl;
     let botonback;
 
 
-    CargarTabla("https://pokeapi.co/api/v2/pokemon/");
+    cargarTablaPokemones("https://pokeapi.co/api/v2/pokemon/");
   
-    cargartarjetapokemon(numero);
+    cargarTarjetaPokemon(numero);
 
     $("#btnNext").click(function() {
 
-        CargarTabla( $("#btnNext").attr("url"));
+        cargarTablaPokemones( $("#btnNext").attr("url"));
 
     });
     $('#pokedex').on('click', 'td', function() {
        
-        cargartarjetapokemon($(this).find('label').text());
-       // cargartarjetapokemon($(this).find('label').attr("id"));
-        console.log("Click por texto: " + $(this).find('label').text());
-        console.log("Click por attr: " + $(this).find('label').attr("id"));
+        cargarTarjetaPokemon($(this).find('label').text());
+       // cargarTarjetaPokemon($(this).find('label').attr("id"));
+       
         
     });
    
 
     $("#btnBack").click(function() {
         
-        CargarTabla($("#btnBack").attr("url"));
+        cargarTablaPokemones($("#btnBack").attr("url"));
 
     });
 
@@ -48,33 +47,31 @@ $(document).ready(function() {""
 });
 
 
-function cargartarjetapokemon(id) {
+function cargarTarjetaPokemon(id) {
     $.ajax({
         url: " https://pokeapi.co/api/v2/pokemon/" + id,
         type: "GET",
         success: function(response) {
             $('#ulPokemon').empty();
-            let nombrepokemon = response.name;
-            let habilidades = response.abilities;
+            let NombrePokemon = response.name;
+            let Habilidades = response.abilities;
             let img = response.sprites;
             let URLSpecies = response.species;
             
-            $("#pokemon2").text(nombrepokemon);
+            $("#pokemon2").text(NombrePokemon);
             $("#imgPokemonF").attr("src", img.front_default);
             $("#imgPokemonB").attr("src", img.back_default);      
-            $("#imgPokemonF").attr("alt", "Imagen delantera de " + nombrepokemon);
-            $("#imgPokemonB").attr("alt", "Imagen trasera de " + nombrepokemon);                  
+            $("#imgPokemonF").attr("alt", "Imagen delantera de " + NombrePokemon);
+            $("#imgPokemonB").attr("alt", "Imagen trasera de " + NombrePokemon);                  
             $("#hid").show();
 
-            console.log("Atrapaste un: " + nombrepokemon + "!")
-            
+           
 
-            for (let i = 0; i<habilidades.length; i++){
-                console.log(habilidades);
-                $('#ulPokemon').append('<li>' + habilidades[i].ability.name + '</li>');
+            for (let i = 0; i<Habilidades.length; i++){
+                
+                $('#ulPokemon').append('<li>' + Habilidades[i].ability.name + '</li>');
             };
             
-            flag=false;
         },
         error: function(error) {
             console.log("Error:", error);
@@ -83,7 +80,7 @@ function cargartarjetapokemon(id) {
 
 }
 
-function CargarTabla(URL){
+function cargarTablaPokemones(URL){
     $.ajax({
         url: URL,
         type: "GET",
@@ -91,7 +88,7 @@ function CargarTabla(URL){
 
                 $("#pokedex").empty();
             
-                let pokemones = response.results;
+                let Pokemones = response.results;
                 if (response.next===null){
                     $("#btnNext").prop("disabled", true);
                     $("#btnNext").attr("url", "");
@@ -110,22 +107,23 @@ function CargarTabla(URL){
                
             
                 
-                console.log( pokemones);
+                console.log( Pokemones);
                 let tabla;
-                let nombrenro = 0; //REMOVER
+                let PokemonNro = 0; 
                 for (let i = 0; i < 4; i++) {
 
                    const row = $('<tr></tr>');
                     
                     for (let j = 0; j < 5; j++) {
                        
-                        const pos = $('<td></td>').text(pokemones[nombrenro].name); //agregar campo hidden con URL
-                        idURL = pokemones[nombrenro].url.split('/').slice(-2, -1)[0];
-                        const labeloculto = $('<label></label>').attr('hidden', true).attr('id', idURL).attr('url', pokemones[nombrenro].url).text(idURL); 
-                        pos.append(labeloculto);
+                        const pos = $('<td></td>').text(Pokemones[PokemonNro].name); //agregar campo hidden con URL
+                        idURL = Pokemones[PokemonNro].url.split('/').slice(-2, -1)[0];
+                        const LabelOculto = $('<label></label>').attr('hidden', true).attr('id', idURL).attr('url', Pokemones[PokemonNro].url).text(idURL); 
+
+                        pos.append(LabelOculto);
                         row.append(pos); 
                         
-                        nombrenro++; 
+                        PokemonNro++; 
                     }
             
                 $("#pokedex").append(row);
@@ -135,4 +133,5 @@ function CargarTabla(URL){
             console.log("Error:", error);
         }
     })
+
 }
