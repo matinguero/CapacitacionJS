@@ -15,17 +15,15 @@ $(document).ready(function() {""
         CargarTabla( $("#btnNext").attr("url"));
 
     });
-
-    $('#pokedex td').on('click', function() {
-        // Get the text of the clicked cell
-        var cellData = $(this).text();
+    $('#pokedex').on('click', 'td', function() {
+       
+        cargartarjetapokemon($(this).find('label').text());
+       // cargartarjetapokemon($(this).find('label').attr("id"));
+        console.log("Click por texto: " + $(this).find('label').text());
+        console.log("Click por attr: " + $(this).find('label').attr("id"));
         
-        // Log the data to the console or use it as needed
-        console.log("Cell data: " + cellData);
-        
-        // Example: Display the data in an alert
-        alert("You clicked on: " + cellData);
     });
+   
 
     $("#btnBack").click(function() {
         
@@ -55,7 +53,7 @@ function cargartarjetapokemon(id) {
         url: " https://pokeapi.co/api/v2/pokemon/" + id,
         type: "GET",
         success: function(response) {
-            
+            $('#ulPokemon').empty();
             let nombrepokemon = response.name;
             let habilidades = response.abilities;
             let img = response.sprites;
@@ -122,6 +120,9 @@ function CargarTabla(URL){
                     for (let j = 0; j < 5; j++) {
                        
                         const pos = $('<td></td>').text(pokemones[nombrenro].name); //agregar campo hidden con URL
+                        idURL = pokemones[nombrenro].url.split('/').slice(-2, -1)[0];
+                        const labeloculto = $('<label></label>').attr('hidden', true).attr('id', idURL).attr('url', pokemones[nombrenro].url).text(idURL); 
+                        pos.append(labeloculto);
                         row.append(pos); 
                         
                         nombrenro++; 
