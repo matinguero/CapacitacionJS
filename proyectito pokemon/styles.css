@@ -34,11 +34,14 @@ button {
   font-size: 20px;
 }
 
+table{
+  font-family: 'ArcadeClassic', sans-serif;
+}
 h1 {
   color: rgb(246, 225, 179);
   text-align: center;
   font-family: 'ArcadeClassic', sans-serif;
-  font-size: 29px;
+  font-size: 28px;
 }
 
 p {
@@ -66,7 +69,7 @@ p {
   height: 100%;
   background-color: rgb(155, 218, 255);
   border-radius: 10px; 
-  padding-top: 4px;
+  
 }
 
 .left-div {
