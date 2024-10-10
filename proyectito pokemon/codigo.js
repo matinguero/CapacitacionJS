@@ -17,9 +17,11 @@ $(document).ready(function() {
     });
     $('#pokedex').on('click', 'td', function() {
        
+        if($(this).find('label').text()!=="")
+        {
         cargarTarjetaPokemon($(this).find('label').text());
        // cargarTarjetaPokemon($(this).find('label').attr("id"));
-       
+        }
         
     });
    
@@ -102,6 +104,7 @@ function cargarTablaPokemones(URL){
                 }else{
                     $("#btnBack").prop("disabled", false);
                     $("#btnBack").attr("url", response.previous);
+                    URLaux=response.previous;
                 }
                
                
@@ -124,8 +127,15 @@ function cargarTablaPokemones(URL){
                         row.append(pos); 
                         }
                         else{
-                            
-                        
+                           urlback = URLaux.split("=");
+                           urlback[2] = "20";
+                           offset = urlback[1].split("&");
+                           offset[0]=1280;
+                           urlback[1]=offset.join("&");
+                           $("#btnBack").attr("url", urlback.join("=")) 
+                           const emptyCell = $('<td></td>').text("");
+                           emptyCell.css('background-color', "rgb(255, 250, 203)");
+                           row.append(emptyCell);
                         }
                         PokemonNro++; 
                     }
