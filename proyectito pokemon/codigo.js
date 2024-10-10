@@ -115,14 +115,18 @@ function cargarTablaPokemones(URL){
                    const row = $('<tr></tr>');
                     
                     for (let j = 0; j < 5; j++) {
-                       
-                        const pos = $('<td></td>').text(Pokemones[PokemonNro].name); //agregar campo hidden con URL
+                       if(Pokemones[PokemonNro] && Pokemones[PokemonNro].name){
+                        const pos = $('<td></td>').text(Pokemones[PokemonNro].name); 
                         idURL = Pokemones[PokemonNro].url.split('/').slice(-2, -1)[0];
                         const LabelOculto = $('<label></label>').attr('hidden', true).attr('id', idURL).attr('url', Pokemones[PokemonNro].url).text(idURL); 
 
                         pos.append(LabelOculto);
                         row.append(pos); 
+                        }
+                        else{
+                            
                         
+                        }
                         PokemonNro++; 
                     }
             
