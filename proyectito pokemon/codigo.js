@@ -121,10 +121,13 @@ function cargarTablaPokemones(URL){
                        if(Pokemones[PokemonNro] && Pokemones[PokemonNro].name){
                         const pos = $('<td></td>').text(Pokemones[PokemonNro].name); 
                         idURL = Pokemones[PokemonNro].url.split('/').slice(-2, -1)[0];
-                        const LabelOculto = $('<label></label>').attr('hidden', true).attr('id', idURL).attr('url', Pokemones[PokemonNro].url).text(idURL); 
+                        const LabelOculto = $('<label></label>').attr('hidden', true).attr('id', idURL).attr('url', Pokemones[PokemonNro].url).text(idURL);
+                        imgurl = URLImagen(idURL);
+                        const imagen = $('<img>').attr('url', imgurl); 
 
                         pos.append(LabelOculto);
-                        row.append(pos); 
+                        pos.append(imagen);
+                        row. append(pos); 
                         }
                         else{
                            urlback = URLaux.split("=");
@@ -147,5 +150,29 @@ function cargarTablaPokemones(URL){
             console.log("Error:", error);
         }
     })
+
+}
+
+function URLImagen(id){
+
+    $.ajax({
+        url: " https://pokeapi.co/api/v2/pokemon/" + id,
+        type: "GET",
+        success: function(response) {
+            $('#ulPokemon').empty();
+           
+            let img = response.sprites.front_default;
+           
+            return img;
+           
+
+           
+
+            
+        },
+        error: function(error) {
+            console.log("Error:", error);
+        }
+    });
 
 }
