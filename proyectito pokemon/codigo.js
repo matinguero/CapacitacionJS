@@ -138,8 +138,8 @@ function cargarTablaPokemones(URL){
                            urlback[1]=offset.join("&");
                            $("#btnBack").attr("url", urlback.join("=")) 
                            const emptyCell = $('<td></td>').text("");
-                           emptyCell.css('background-color', "rgb(255, 250, 203)");
-                           row.append(emptyCell);
+                           emptyCell.addClass('empty-cell');
+                              row.append(emptyCell);
                         }
                         PokemonNro++; 
                     }

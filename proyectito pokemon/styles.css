@@ -125,3 +125,7 @@ p {
     cursor: pointer; 
     transition: background-color 0.3s ease, color 0.3s ease; 
 }
+
+.empty-cell {
+    background-color: rgb(255, 250, 203);
+}
